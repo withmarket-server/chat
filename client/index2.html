@@ -1,0 +1,29 @@
+<html>
+    <head>
+      <script src="https://cdn.socket.io/4.3.2/socket.io.min.js" integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs" crossorigin="anonymous"></script>
+      <script>
+        // let ws = new WebSocket("ws://localhost:8085");
+        // ws.onmessage = message => console.log(`Received: ${message.data}`);
+        // ws.send("Hello! I'm client");
+        // const socket = io('http://localhost:8085');
+        const userId = '1';
+        const KR_TIME_DIFF = 9*60*60*1000;
+        const curr = new Date();
+        const utc = curr.getTime() + (curr.getTimezoneOffset() * 60 * 1000);
+        const socket = io(`http://localhost:3000?userId=${userId}`);
+
+        socket.on('to-client', (data) => {
+          console.log('event', data);
+        });
+        socket.on('disconnect', () => {
+          console.log('Disconnected');
+        });
+
+        // socket.emit('change-state', { userId: '1', groupId: '5', state: 'join' });
+        // socket.emit('change-state', { userId: '1', groupId: '5', state: 'leave' });
+        // socket.emit('to-server', { userId: '1', username: "kihwan", groupId: '5', message: "압축가능?", createdAt: new Date(utc + KR_TIME_DIFF) });
+      </script>
+    </head>
+  
+    <body></body>
+  </html>

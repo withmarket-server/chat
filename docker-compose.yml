@@ -1,0 +1,24 @@
+version : '3'
+
+services:
+    lb:
+        image: haproxy
+        ports: 
+            - "8085:8080"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+    messageGateway-01:
+        image: singahu/messageGateway:0.0.1
+        environment:
+            - APPID=0001
+    messageGateway-02:
+        image: singahu/messageGateway:0.0.1
+        environment:
+            - APPID=0002
+    messageGateway-03:
+        image: singahu/messageGateway:0.0.1
+        environment:
+            - APPID=0003
+    redis-pubsub:
+        image: redis
+
