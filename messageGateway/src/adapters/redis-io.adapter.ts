@@ -15,6 +15,7 @@ const redisHost = process.env.REDIS_HOST || 'localhost'
 // const redisSentinel = { sentinels: JSON.parse(process.env.REDIS_SENTINEL), name: 'master01' };
 // const pubClient = new SentinelConnector(options);
 
+
 export class RedisIoAdapter extends IoAdapter {
   private adapterConstructor: ReturnType<typeof createAdapter>;
 
